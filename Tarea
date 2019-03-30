@@ -1,0 +1,83 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+
+void BubbleSort(int A[], int asc)
+{
+	int Longitud= sizeof(A)/sizeof(A[0]);
+	int i,j,aux;
+	char Verdad[5];
+	FILE* fd;     
+    fd = fopen("Bubble.txt", "at");
+    fprintf (fd, "\n-Arreglo original: ");
+    for(i=0;i<Longitud;i++){
+    	fprintf (fd, "%i ",A[i]);
+    }
+	int num_op;
+    if(asc=1){
+        Verdad[5]='TRUE';	
+		for(i=0;i<Longitud;i++){
+		    for(j=0;j<Longitud;j++){
+			    if(A[j]>A[j+1]){
+			    	num_op++;
+				    aux=A[j];
+				    num_op++;
+				    A[j]=A[j+1];
+				    num_op++;
+				    A[j+1]=aux;
+				    num_op++;
+			    }
+			num_op++;
+		    }
+		num_op++;
+	    }
+	num_op++;
+    }
+    else{
+    	Verdad[5]='FALSE';
+		for(i=0;i<Longitud;i++){
+		    for(j=0;j<Longitud;j++){
+			    if(A[j]<A[j+1]){
+			       num_op++;
+				   aux=A[j];
+				   num_op++;
+				   A[j]=A[j+1];
+				   num_op++;
+				   A[j+1]=aux;
+				   num_op++;
+		     	}
+	    	num_op++;
+			}
+     	num_op++;
+		}
+    }
+
+    fprintf (fd, "\n-Tamaño: %i", Longitud);
+    fprintf (fd, "\n-Asc: %s", Verdad);
+    fprintf (fd, "\n-Arreglo ordenado: ");
+    for(i=0;i<Longitud;i++){
+    	fprintf (fd, "%i ",A[i]);
+    }
+    fprintf (fd, "\n-Operaciones realizadas: %i", num_op);
+    fclose(fd);
+    printf ("\n-Tamaño: %i", Longitud);
+    printf ("\n-Asc: %s", Verdad);
+    printf ("\n-Arreglo ordenado: ");
+    for(i=0;i<Longitud;i++){
+    	printf ("%i ",A[i]);
+    }
+    printf ("\n-Operaciones realizadas: %i", num_op);
+	
+}
+
+int main(){
+	
+	int A[]={5,7,3,2,6,8,9};
+	BubbleSort(A,1);
+	return 0;
+	
+	
+	
+	
+}
